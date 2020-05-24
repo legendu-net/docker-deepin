@@ -21,8 +21,8 @@ docker run -d \
     --name jupyterhub-ds \
     --log-opt max-size=50m \
     -p 4000:4000 \
-    -v `pwd`:/workdir \
-    -v `dirname $HOME`:/home_host \
+    -v "$(pwd)":/workdir \
+    -v "$(dirname $HOME)":/home_host \
     dclong/deepin
 ```
 The following command (only works on Linux) does the same as the above one 
@@ -34,16 +34,12 @@ docker run -d \
     --memory=$(($(head -n 1 /proc/meminfo | awk '{print $2}') * 4 / 5))k \
     --cpus=$((`nproc` - 1)) \
     -p 4000:4000 \
-    -v `pwd`:/workdir \
-    -v `dirname $HOME`:/home_host \
+    -v "$(pwd)":/workdir \
+    -v "$(dirname $HOME)":/home_host \
     dclong/deepin
 ```
 
 ## [Detailed Information](http://www.legendu.net/en/blog/my-docker-images/#list-of-images-and-detailed-information) 
-
-## [Use the JupyterHub Server](http://www.legendu.net/en/blog/my-docker-images/#use-the-jupyterhub-server)
-
-## [Add a New User to the JupyterHub Server](http://www.legendu.net/en/blog/my-docker-images/#add-a-new-user-to-the-jupyterhub-server)
 
 ## [Known Issues](http://www.legendu.net/en/blog/my-docker-images/#known-issues)
 
