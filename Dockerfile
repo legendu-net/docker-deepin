@@ -1,20 +1,20 @@
 FROM bestwu/deepin:panda
 
 RUN echo "deb http://mirrors.kernel.org/deepin/  panda main non-free contrib" > /etc/apt/sources.list \
-    && apt-get update && apt-mark \
+    && apt-get -y update && apt-mark \
         hold iptables \
-    && apt-get install -y apt-utils wget \
+    && apt-get -y install apt-utils wget \
     && apt-get dist-upgrade -y \
     && apt-get autoremove -y \
     && apt-get autoclean
 
 # language and fonts
 ENV LANG en_US.utf8
-RUN apt-get install -y locales-all fonts-arphic-uming
+RUN apt-get -y install locales-all fonts-arphic-uming
 
 ARG url=https://download.nomachine.com/download/6.5/Linux/nomachine_6.5.6_9_amd64.deb
 RUN DEBIAN_FRONTEND=noninteractive \
-    && apt-get install -y --no-install-recommends \
+    && apt-get -y install --no-install-recommends \
         dbus-x11 procps psmisc \
         at-spi2-core dconf-cli dconf-editor \
         gnome-themes-standard gtk2-engines-murrine gtk2-engines-pixbuf \
